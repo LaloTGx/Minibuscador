@@ -1,0 +1,2 @@
+# Minibuscador
+es un minibuscador
