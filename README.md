@@ -1,7 +1,7 @@
 # Minibuscador
 es un minibuscador :)
 
-#Proyecto Django: Gestión de Carpetas
+# Proyecto Django: Gestión de Carpetas
 Este proyecto Django está estructurado en las siguientes carpetas:
 
 #1. proyecto1
