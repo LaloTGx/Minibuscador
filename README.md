@@ -1,2 +1,2 @@
 # Minibuscador
-es un minibuscador
+es un minibuscador :)
