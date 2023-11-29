@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados de Búsqueda</title>
+    <link rel="stylesheet" href="{% static 'Vistaresultado.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="{% url 'mostrar_formulario_busqueda' %}" class="logo">Mi Búsqueda</a>
+                <form action="{% url 'mostrar_resultados' %}" method="GET" class="search-form">
+                    <input type="text" name="consulta" placeholder="Buscar...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+                <button id="modo-btn">Cambiar Modo</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2>Resultados para: {{ consulta }}</h2>
+
+        <p>{{ cantidad_resultados }} resultados encontrados en {{ tiempo_busqueda|floatformat:"10" }} segundos</p>
+
+        <ul class="result-list">
+            {% for url in resultados %}
+                <li>
+                    <div class="url-container">
+                        <a href="{{ url }}" class="url">{{ url }}</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <a href="{% url 'mostrar_formulario_busqueda' %}" class="back-link">Volver al formulario de búsqueda</a>
+    </main>
+
+    <script>
+        document.getElementById("modo-btn").addEventListener("click", function() {
+            document.body.classList.toggle("dark-mode");
+            document.querySelectorAll(".container").forEach(function(container) {
+                container.classList.toggle("dark-mode");
+            });
+            document.querySelectorAll(".url-container").forEach(function(urlContainer) {
+                urlContainer.classList.toggle("dark-mode");
+            });
+            document.querySelectorAll(".search-form button, .back-link, .logo").forEach(function(element) {
+                element.classList.toggle("dark-mode");
+            });
+        });
+    </script>
+</body>
+</html>
